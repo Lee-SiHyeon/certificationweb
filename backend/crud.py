@@ -62,4 +62,20 @@ def create_event(db: Session, event: schemas.CertificationEventCreate):
     db.refresh(db_event)
     return db_event
 
+def update_event_status(db: Session, event_id: int, status: str):
+    db_event = db.query(models.CertificationEvent).filter(models.CertificationEvent.id == event_id).first()
+    if db_event:
+        db_event.status = status
+        if status == "Completed":
+            from datetime import date
+            db_event.completed_date = date.today()
+        else:
+            db_event.completed_date = None
+        db.commit()
+        db.refresh(db_event)
+    return db_event
+    db.commit()
+    db.refresh(db_event)
+    return db_event
+
 

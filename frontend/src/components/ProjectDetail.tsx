@@ -85,6 +85,17 @@ const ProjectDetail: React.FC = () => {
     }
   };
 
+  const handleStatusChange = async (eventId: number, newStatus: string) => {
+    try {
+        await apiClient.put(`/events/${eventId}/status`, { status: newStatus });
+        // Update local state to reflect change immediately
+        setEvents(events.map(e => e.id === eventId ? { ...e, status: newStatus } : e));
+    } catch (err) {
+        console.error("Failed to update status", err);
+        alert("상태 업데이트에 실패했습니다.");
+    }
+  };
+
   if (error) return <div className="alert alert-danger">{error}</div>;
   if (!project) return <div>Loading...</div>;
 
@@ -133,6 +144,7 @@ const ProjectDetail: React.FC = () => {
                     <th>MNO</th>
                     <th>Due Date</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -141,7 +153,26 @@ const ProjectDetail: React.FC = () => {
                     <td>{event.sw_version}</td>
                     <td>{mnos.find(m => m.id === event.mno_id)?.name || 'N/A'}</td>
                     <td>{event.due_date}</td>
-                    <td><span className="badge bg-primary">{event.status}</span></td>
+                    <td>
+                        <select 
+                            className={`form-select form-select-sm ${
+                                event.status === 'Completed' ? 'bg-success text-white' : 
+                                event.status === 'Delayed' ? 'bg-danger text-white' : 
+                                event.status === 'In Progress' ? 'bg-warning text-dark' : ''
+                            }`}
+                            value={event.status}
+                            onChange={(e) => handleStatusChange(event.id, e.target.value)}
+                        >
+                            <option value="Planned">Planned</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Delayed">Delayed</option>
+                        </select>
+                    </td>
+                    <td>
+                        {/* Placeholder for future actions like delete */}
+                        <button className="btn btn-sm btn-outline-secondary" disabled>Edit</button>
+                    </td>
                     </tr>
                 ))}
                 </tbody>

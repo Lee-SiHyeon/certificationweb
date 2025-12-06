@@ -96,3 +96,10 @@ def create_event(event: schemas.CertificationEventCreate, db: Session = Depends(
 def read_events(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     events = crud.get_events(db, skip=skip, limit=limit)
     return events
+
+@app.put("/api/events/{event_id}/status", response_model=schemas.CertificationEvent)
+def update_event_status(event_id: int, status_update: schemas.CertificationEventUpdate, db: Session = Depends(get_db)):
+    db_event = crud.update_event_status(db, event_id=event_id, status=status_update.status)
+    if db_event is None:
+        raise HTTPException(status_code=404, detail="Event not found")
+    return db_event

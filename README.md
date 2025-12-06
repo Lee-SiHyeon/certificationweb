@@ -51,6 +51,7 @@
 - **Certification Events**
     - `GET /api/events/` : 전체 이벤트 조회
     - `POST /api/events/` : 이벤트 생성
+    - `PUT /api/events/{event_id}/status` : 이벤트 상태 수정 (Planned, In Progress, Completed, Delayed)
 
 ## 7. 개발 시작 가이드 (Getting Started)
 

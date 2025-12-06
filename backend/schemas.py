@@ -14,6 +14,9 @@ class CertificationEventBase(BaseModel):
 class CertificationEventCreate(CertificationEventBase):
     pass
 
+class CertificationEventUpdate(BaseModel):
+    status: str
+
 class CertificationEvent(CertificationEventBase):
     id: int
     completed_date: Optional[date] = None

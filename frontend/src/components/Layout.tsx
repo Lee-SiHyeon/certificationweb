@@ -16,7 +16,13 @@ const Layout: React.FC = () => {
                 <Link className="nav-link" to="/">Dashboard</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/overview">Overview</Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/oems">OEMs</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/mnos">MNOs</Link>
               </li>
             </ul>
           </div>

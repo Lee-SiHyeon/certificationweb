@@ -1,9 +1,13 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# SQLite 데이터베이스 파일 경로 설정
-SQLALCHEMY_DATABASE_URL = "sqlite:///./cert_manager.db"
+# Get the directory of the current file (backend/)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Point to the parent directory (root) for the database file
+DB_PATH = os.path.join(os.path.dirname(BASE_DIR), "cert_manager.db")
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 # SQLAlchemy 엔진 생성
 # connect_args는 SQLite에서만 필요합니다. (쓰레드 관련 설정)
