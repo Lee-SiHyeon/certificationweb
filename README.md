@@ -11,21 +11,21 @@
 
 ## 3. 주요 기능 (Key Features)
 - **중앙 대시보드:** 모든 인증 현황을 시각적으로 (긴급, 예정, 완료, 지연) 파악.
-- **마스터 데이터 관리:**
-    - OEM 및 하위 프로젝트 등록 및 관리 (예: GM > GEN10, GEN11 / JLR > P-IVI, TCUA)
-    - MNO 정보 등록 및 관리
-    - 프로젝트별 필요 MNO 인증 매핑
+- **마스터 데이터 관리 (Master-Detail 구조):**
+    - **OEM 목록:** 모든 OEM을 한눈에 확인.
+    - **프로젝트 목록:** 특정 OEM 선택 시 해당 OEM의 프로젝트 목록 표시.
+    - **프로젝트 상세:** 프로젝트별 상세 정보 및 인증 이벤트 관리.
+    - **MNO 관리:** 전 세계 MNO 정보 등록 및 관리.
 - **인증 이벤트 관리:**
     - 소프트웨어 버전 릴리즈 등 인증이 필요한 이벤트 생성.
     - 이벤트별 상태 (계획, 진행중, 완료), 담당자, 마감일 설정 및 추적.
 - **알림 및 리포팅:** 마감일 임박 및 지연된 항목 자동 알림.
-- **검색 및 필터:** OEM, MNO, 프로젝트, 인증 상태 등 다양한 조건으로 데이터 검색.
 
 ## 4. 기술 스택 (Tech Stack)
-- **Backend:** Python, FastAPI
-- **Frontend:** React (TypeScript)
-- **Database:** SQLite (초기 개발), 추후 확장 가능
-- **Styling:** Bootstrap, Material Design
+- **Backend:** Python, FastAPI, SQLAlchemy
+- **Frontend:** React (TypeScript), Vite
+- **Database:** SQLite
+- **Styling:** Bootstrap
 
 ## 5. 데이터베이스 스키마 (Database Schema)
 | 테이블 (Table)              | 컬럼 (Columns)                                                              | 설명 (Description)                               |
