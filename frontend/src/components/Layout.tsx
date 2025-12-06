@@ -19,6 +19,9 @@ const Layout: React.FC = () => {
                 <Link className="nav-link" to="/overview">Overview</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/map">MNO Map</Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/oems">OEMs</Link>
               </li>
               <li className="nav-item">

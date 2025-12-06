@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date, Float
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -26,6 +26,11 @@ class MNO(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
+    region = Column(String, nullable=True)
+    country = Column(String, nullable=True)
+    market_share = Column(Float, nullable=True) # Percentage (e.g., 35.5)
+    latitude = Column(Float, nullable=True)
+    longitude = Column(Float, nullable=True)
 
     events = relationship("CertificationEvent", back_populates="mno")
 

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Dashboard from './components/Dashboard';
 import Overview from './components/Overview';
+import MnoMap from './components/MnoMap';
 import OemList from './components/OemList';
 import ProjectList from './components/ProjectList';
 import ProjectDetail from './components/ProjectDetail';
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="overview" element={<Overview />} />
+          <Route path="map" element={<MnoMap />} />
           <Route path="mnos" element={<MnoManager />} />
           <Route path="oems" element={<OemList />} />
           <Route path="oems/:oemId" element={<ProjectList />} />

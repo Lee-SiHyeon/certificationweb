@@ -27,6 +27,11 @@ class CertificationEvent(CertificationEventBase):
 # --- MNO Schemas ---
 class MNOBase(BaseModel):
     name: str
+    region: Optional[str] = None
+    country: Optional[str] = None
+    market_share: Optional[float] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
 
 class MNOCreate(MNOBase):
     pass

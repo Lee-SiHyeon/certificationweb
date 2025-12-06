@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 # Get the directory of the current file (backend/)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Point to the parent directory (root) for the database file
-DB_PATH = os.path.join(os.path.dirname(BASE_DIR), "cert_manager.db")
+DB_PATH = os.path.join(os.path.dirname(BASE_DIR), "cert_manager_v3.db")
 SQLALCHEMY_DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 # SQLAlchemy 엔진 생성
