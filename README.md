@@ -48,6 +48,66 @@
 - **MNOs**
     - `GET /api/mnos/` : MNO 목록 조회
     - `POST /api/mnos/` : MNO 생성
+
+## 7. 설치 및 실행 방법 (Installation & Execution)
+
+이 프로젝트를 다른 PC에서 실행하려면 다음 단계를 따르세요.
+
+### 필수 요구 사항 (Prerequisites)
+- **Python 3.8+**
+- **Node.js 14+**
+- **Git**
+
+### 1. 프로젝트 클론 (Clone Repository)
+```bash
+git clone https://github.com/Lee-SiHyeon/certificationweb.git
+cd certificationweb
+```
+
+### 2. 백엔드 설정 (Backend Setup)
+```bash
+# 백엔드 디렉토리로 이동
+cd backend
+
+# 가상환경 생성 (선택 사항이지만 권장)
+python -m venv venv
+# Windows:
+.\venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+
+# 의존성 패키지 설치
+pip install -r requirements.txt
+
+# 데이터베이스 초기화 및 시드 데이터 생성
+# (순서대로 실행해주세요)
+python init_db.py
+python seed_oems.py
+python seed_mnos.py
+python seed_jlr_bell.py
+
+# 백엔드 서버 실행
+uvicorn main:app --reload
+```
+*백엔드 서버는 `http://localhost:8000`에서 실행됩니다.*
+
+### 3. 프론트엔드 설정 (Frontend Setup)
+새로운 터미널을 열고 실행하세요.
+```bash
+# 프론트엔드 디렉토리로 이동
+cd frontend
+
+# 의존성 패키지 설치
+npm install
+
+# 개발 서버 실행
+npm run dev
+```
+*프론트엔드 서버는 `http://localhost:5173` (또는 터미널에 표시된 주소)에서 실행됩니다.*
+
+### 4. 접속
+웹 브라우저에서 `http://localhost:5173`으로 접속하여 애플리케이션을 사용합니다.
+
 - **Certification Events**
     - `GET /api/events/` : 전체 이벤트 조회
     - `POST /api/events/` : 이벤트 생성
